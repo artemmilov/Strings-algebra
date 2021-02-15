@@ -12,17 +12,6 @@ inline int max(int a, int b)
 		return b;
 }
 
-string random_generate(int n)
-{
-	string str = "";
-	for (int i = 0; i < n; i++)
-		if (rand() % 2 == 0)
-			str += 'a';
-		else
-			str += 'b';
-	return str;
-}
-
 int LCS_length(string str1, string str2)
 {
 	int** LCS_len = new int*[str1.length() + 1];
@@ -188,32 +177,16 @@ string LongestPalindrome(string str)
 	return result_str1 + result_str2;
 }
 
-
-
-//float calculate_C(int n, float accuracy_value)
-//{
-//	double delta;
-//	string a = random_generate(n);
-//	string b = random_generate(n);
-//	double c_last = 0;
-//	double c_now = LCS_length(a,b) / double(n);
-//	long sample_counter = 1;
-//	delta = abs(c_now - c_last);
-//	while (delta >= accuracy_value || sample_counter <= 100)
-//	{
-//		c_last = c_now;
-//		a = random_generate(n);
-//		b = random_generate(n);
-//		c_now = (c_last * sample_counter + LCS_length(a, b) / double(n)) / (sample_counter + 1);
-//
-//		//cout << c_now << endl;
-//
-//		delta = abs(c_now - c_last);
-//		sample_counter++;
-//	}
-//	return c_now;
-//}
-
+string random_generate(int n)
+{
+	string str = "";
+	for (int i = 0; i < n; i++)
+		if (rand() % 2 == 0)
+			str += 'a';
+		else
+			str += 'b';
+	return str;
+}
 float calculate_C(float accuracy_value)
 {
 	double delta;
@@ -230,8 +203,6 @@ float calculate_C(float accuracy_value)
 		b = random_generate(sample_counter);
 		c_now = (c_last * sample_counter + LCS_length(a, b) / double(sample_counter)) / (sample_counter + 1);
 
-		//cout << c_now << endl;
-
 		delta = abs(c_now - c_last);
 		sample_counter++;
 	}
@@ -241,15 +212,4 @@ float calculate_C(float accuracy_value)
 
 int main()
 {
-	srand(time(NULL));
-
-	int n;
-	string a, b;
-	while (true)
-	{
-		cin >> a;
-		cout << LongestPalindrome(a) << endl;
-		//cout << calculate_C(0.00001) << endl;
-	}
-	return 0;
 }
