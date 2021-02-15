@@ -212,4 +212,6 @@ float calculate_C(float accuracy_value)
 
 int main()
 {
+	srand(time(NULL));
+	return 0;
 }
